@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>New York Air Pollution Data</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="../../plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="../../plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="../../plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- JQuery DataTable Css -->
+    <link href="../../plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- Morris Css -->
+    <link href="../../plugins/morrisjs/morris.css" rel="stylesheet" />
+
+    <!-- Bootstrap Select Css -->
+    <link href="../../plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
+    <!-- Custom Css -->
+    <link href="../../css/style.css" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="../../css/themes/all-themes.css" rel="stylesheet" />
+</head>
+
+<body class="theme-red">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <div class="search-icon">
+            <i class="material-icons">search</i>
+        </div>
+        <input type="text" placeholder="START TYPING...">
+        <div class="close-search">
+            <i class="material-icons">close</i>
+        </div>
+    </div>
+    <!-- #END# Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" href="../../pages/tables/poland-pollution.html">AIR POLLUTION DATA</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Call Search -->
+                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- #Top Bar -->
+    <section>
+        <!-- Left Sidebar -->
+        <aside id="leftsidebar" class="sidebar">
+            <!-- Menu -->
+            <div class="menu">
+                <ul class="list">
+                    <li class="header">MAIN NAVIGATION</li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">swap_calls</i>
+                            <span>Data Visualization</span>
+                        </a>
+                        <ul class="ml-menu">
+                    <li class="active">
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">view_list</i>
+                            <span>Countries</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li class="active">
+                                <a href="../../pages/tables/new-york-pollution.html">USA</a>
+                            </li>
+                            <li class="active">
+                                <a href="../../pages/tables/poland-pollution.html">Poland</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- #Menu -->
+            <!-- Footer -->
+            <div class="legal">
+                <div class="copyright">
+                    &copy; 2018 <a href="javascript:void(0);">Yaroslava Romanets, using AdminBSB - Material Design</a>.
+                </div>
+                <div class="version">
+                    <b>Version: </b> 1.0
+                </div>
+            </div>
+            <!-- #Footer -->
+        </aside>
+        <!-- #END# Left Sidebar -->
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2>
+                    AIR POLLUTION DATA - NEW YORK
+                </h2>
+            </div>
+            <!-- Basic Examples -->
+            <!-- Select -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                SELECT REGION
+                                <small>Taken from <a href="https://silviomoreto.github.io/bootstrap-select/" target="_blank">silviomoreto.github.io/bootstrap-select</a></small>
+                            </h2>
+                            <ul class="header-dropdown m-r--5">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">more_vert</i>
+                                    </a>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="javascript:void(0);">Action</a></li>
+                                        <li><a href="javascript:void(0);">Another action</a></li>
+                                        <li><a href="javascript:void(0);">Something else here</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body">
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <select id="region-select" class="form-control show-tick" onchange="getStationDataByDistrict()">
+                                        <option value="">-- Select region to be displayed  --</option>
+                                        <option value="Brooklyn">Brooklyn</option>
+                                        <option value="Manhattan">Manhattan</option>
+                                        <option value="Queens">Queens</option>
+                                        <option value="Staten Island">Staten Island</option>
+                                        <option value="New York">New York City</option>
+                                        <option value="Bronx">Bronx</option>
+                                        <option value="Kingsbridge - Riverdale">Kingsbridge - Riverdale</option>
+                                        <option value="Pelham - Throgs Neck">Pelham - Throgs Neck</option>
+                                        <option value="Crotona -Tremont">Crotona -Tremont</option>
+                                        <option value="High Bridge - Morrisania">High Bridge - Morrisania</option>
+                                        <option value="Hunts Point - Mott Haven">Hunts Point - Mott Haven</option>
+                                        <option value="Greenpoint">Greenpoint</option>
+                                        <option value="Downtown - Heights - Slope">Downtown - Heights - Slope</option>
+                                        <option value="Bedford Stuyvesant - Crown Heights">Bedford Stuyvesant - Crown Heights</option>
+                                        <option value="Sunset Park">Sunset Park</option>
+                                        <option value="Borough Park">Borough Park</option>
+                                        <option value="East Flatbush - Flatbush">East Flatbush - Flatbush</option>
+                                        <option value="Canarsie - Flatlands">Canarsie - Flatlands</option>
+                                        <option value="Bensonhurst - Bay Ridge">Bensonhurst - Bay Ridge</option>
+                                        <option value="Coney Island - Sheepshead Bay">Coney Island - Sheepshead Bay</option>
+                                        <option value="Washington Heights">Washington Heights</option>
+                                        <option value="Williamsburg - Bushwick">Williamsburg - Bushwick</option>
+                                        <option value="Harlem">Harlem</option>
+                                        <option value="Upper West Side">Upper West Side</option>
+                                        <option value="Upper East Side">Upper East Side</option>
+                                        <option value="Chelsea - Clinton">Chelsea - Clinton</option>
+                                        <option value="Gramercy Park - Murray Hill">Gramercy Park - Murray Hill</option>
+                                        <option value="Greenwich Village - SoHo">Greenwich Village - SoHo</option>
+                                        <option value="Union Square - Lower East Side">Union Square - Lower East Side</option>
+                                        <option value="Long Island City - Astoria">Long Island City - Astoria</option>
+                                        <option value="Flushing - Clearview">Flushing - Clearview</option>
+                                        <option value="Bayside - Little Neck">Bayside - Little Neck</option>
+                                        <option value="Ridgewood - Forest Hills">Ridgewood - Forest Hills</option>
+                                        <option value="Fresh Meadows">Fresh Meadows</option>
+                                        <option value="Jamaica">Jamaica</option>
+                                        <option value="Rockaways">Rockaways</option>
+                                        <option value="Port Richmond">Port Richmond</option>
+                                        <option value="Stapleton - St. George">Stapleton - St. George</option>
+                                        <option value="Willowbrook">Willowbrook</option>
+                                        <option value="South Beach - Tottenville">South Beach - Tottenville</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Select -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                ACTIVE STATIONS DATA
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table id="region_table" class="table table-bordered table-striped table-hover dataTable">
+                                    <thead>
+                                    </thead>
+                                    <tfoot>
+                                    </tfoot>
+                                </table>
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="card">
+                <div class="header">
+                    <h2>BRONX 2005</h2>
+                </div>
+                <div class="body">
+                    <div id="Bronx-2005-bar_chart" class="graph"></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="header">
+                    <h2>BRONX 2013</h2>
+                </div>
+                <div class="body">
+                    <div id="Bronx-2013-bar_chart" class="graph"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jquery Core Js -->
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="../../plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="../../plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="../../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="../../plugins/node-waves/waves.js"></script>
+
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="../../plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="../../plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="../../plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="../../plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="../../plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="../../plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="../../plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="../../plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="../../plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+
+    <!-- Morris Plugin Js -->
+    <script src="../../plugins/raphael/raphael.min.js"></script>
+    <script src="../../plugins/morrisjs/morris.js"></script>
+
+    <!-- Custom Js -->
+    <script src="../../js/admin.js"></script>
+    <script src="../../js/pages/tables/jquery-datatable.js"></script>
+    <script src="../../js/pages/charts/new-york-morris.js"></script>
+    <script src="../../js/pages/tables/populate-region-datatable.js"></script>
+    <!-- Demo Js -->
+    <script src="../../js/demo.js"></script>
+</body>
+
+</html>
